@@ -21,10 +21,12 @@ export default async function MovieDetail({
 }) {
   // console.log(props); // url parameters를 받을 수 있음(id, query)
   console.log(`Start Fetching: ${Date.now()}`);
-  // getMovie Fetching을 끝낸 후 getVideos Fetching을 순차적으로 진행함
+  /* // getMovie Fetching을 끝낸 후 getVideos Fetching을 순차적으로 진행함
   // 응답대기시간이 길어지게 됨
   const movie = await getMovie(id);
-  const videos = await getVideos(id);
+  const videos = await getVideos(id); */
+  /* Parallel Requests(Fetching) */
+  const [movie, videos] = await Promise.all([getMovie(id), getVideos(id)]);
   console.log(`End Fetching: ${Date.now()}`);
   return <h1>{movie.title}</h1>;
 }
