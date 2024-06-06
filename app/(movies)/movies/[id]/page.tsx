@@ -10,11 +10,9 @@ export default function MovieDetail({
   console.log("==============");
   return (
     <div>
-      <h3>Movie detail page</h3>
       <Suspense fallback={<h1>Loading movie info</h1>}>
         <MovieInfo id={id} />
       </Suspense>
-      <h3>Videos</h3>
       <Suspense fallback={<h1>Loading movie videos</h1>}>
         <MovieVideos id={id} />
       </Suspense>
